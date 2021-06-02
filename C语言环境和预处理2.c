@@ -174,3 +174,45 @@ int mian()
 //2.宏是没法调试的
 //3.宏由于类型无关,也不够严谨
 //4.宏可能会带来运算符优先级的问题,导致程序容易出错
+
+//宏有时候可以做函数做不到的事情,比如:宏的参数可以出现类型,但是函数做不到
+#define SIZEOF(type) sizeof(type)
+int main()
+{
+	int ret = SIZEOF(int);
+	//等价于int ret = sizeof(int);
+	printf("%d\n", ret);
+	return 0;
+}
+
+//在动态内存开辟的时候也更加的方便
+#define MALLOC(num,type) (type*)malloc(num*sizeof(type))
+int main()
+{
+	int* p = (int*)malloc(10 * sizeof(int)); //传统的写法
+
+	int* p = MALLOC(10, int);
+	//int* p = (int*)malloc(10*sizeof(int));
+	return 0;
+}
+
+//命名约定
+//一般来讲函数和宏的使用语法很相似,所以语言本身没法帮我们区分二者,那我们平时的一个习惯就是:
+//把宏名全部大写,函数名不要全部大写
+
+
+
+//#undef - 这条指令用于移除一个宏定义
+#define MAX 100
+int main()
+{
+	printf("MAX = %d\n", MAX);
+#undef MAX
+	printf("MAX = %d\n", MAX); //此时的MAX被移除,无法再使用了
+	return 0;
+}
+//#undef NAME 如果现存的一个名字需要被重新定义,那么它的旧名字首先要被移除
+
+
+//命令行定义
+//pp255
