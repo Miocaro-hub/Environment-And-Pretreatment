@@ -67,5 +67,3 @@ int main()
 //宏的申明方式:
 //#define name(parament-list)stuff其中的parament-list是一个由逗号隔开的符号表,它们可能出现在stuff中
 //参数列表的左括号必须与name紧邻,如果两者之间有任何空白存在,参数列表就会被解释为stuff的一部分
-
-//p221 9:50
